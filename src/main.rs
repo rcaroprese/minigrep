@@ -6,7 +6,7 @@ fn main() {
     // println!("{:?}", args);
     // println!("{:#?}", args);
 
-    let config = parse_config(&args);
+    let config = Config::new(&args);
 
     println!("Searching for {}", config.query);
     println!("In file {}", config.filename);
@@ -16,7 +16,7 @@ fn main() {
     let contents = fs::read_to_string(config.filename)
     .expect("Something went wrong reading the file");
     
-    println!("With text:\n{}", contents);
+    println!("With text:\n\n{}", contents);
 }
 
 struct Config {
@@ -24,10 +24,13 @@ struct Config {
     filename: String,
 }
 
-fn parse_config(args: &[String]) -> Config {
-    let query = args[1].clone();
-    let filename = args[2].clone();
-    
-    Config { query, filename }
+impl Config {
+    fn new(args: &[String]) -> Config {
+        let query = args[1].clone();
+        let filename = args[2].clone();
+        
+        Config { query, filename }
+    }
 }
+
 
