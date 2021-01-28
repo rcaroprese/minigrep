@@ -120,18 +120,19 @@ pub fn search_case_insensitive<'a>(
     query: &str,
     contents: &'a str,
 ) -> Vec<&'a str> {
-    let query = query.to_lowercase();
+    // let query = query.to_lowercase();
     // let mut results =  Vec::new();
-
+    
     // for line in contents.lines() {
-    //     if line.to_lowercase().contains(&query) {
-    //         results.push(line);
-    //     }
-    // }
-
-    // results
-
+        //     if line.to_lowercase().contains(&query) {
+            //         results.push(line);
+            //     }
+            // }
+            
+            // results
+            
     // Avoid having a mutable results vector by:
+    let query = query.to_lowercase();
     contents
         .lines()
         .filter(|line| line.to_lowercase().contains(&query))
